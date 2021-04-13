@@ -1,0 +1,181 @@
+<div
+  class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch"
+  id="kt_body"
+>
+  <div
+    class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+    id="kt_content"
+  >
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+      <div class="kt-container ">
+        <div class="kt-subheader__main">
+          <h3 class="kt-subheader__title">{{ user?.displayName }}</h3>
+        </div>
+      </div>
+    </div>
+    <!-- end:: Subheader -->
+
+    <!-- begin:: Content -->
+    <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+      <div class="row">
+        <!--Begin:: App Aside-->
+        <div class="col-md-4">
+          <div class="kt-portlet">
+            <div class="kt-portlet__body kt-portlet__body--fit-y pt-5 pb-4">
+              <!--begin::Widget -->
+              <div class="kt-widget kt-widget--user-profile-1">
+                <div class="kt-widget__head">
+                  <div class="kt-widget__media">
+                    <img
+                      src="{{
+                        user?.userProfile != null
+                          ? user?.userProfile
+                          : 'assets/imgs/User_Alternative.png'
+                      }}"
+                      onError="this.onerror=null;this.src='assets/imgs/User_Alternative.png'"
+                      alt="image"
+                    />
+                    <!-- <img src="./assets/media/users/100_4.jpg" alt="image"> -->
+                  </div>
+                  <div class="kt-widget__content">
+                    <div class="kt-widget__section">
+                      <span class="kt-widget__username">
+                        {{ user?.displayName }}
+                      </span>
+                      <span class="kt-widget__subtitle">
+                        {{ user?.lastUpdate | fromNow }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kt-widget__body pt-2">
+                  <div class="kt-widget__content">
+                    <div class="kt-widget__info">
+                      <span class="kt-widget__label">Email:</span>
+                      <span class="kt-widget__data"> {{ user?.email }}</span>
+                    </div>
+                    <div class="kt-widget__info">
+                      <span class="kt-widget__label">Paypal Email:</span>
+                      <span class="kt-widget__data"> {{ user?.paypal }}</span>
+                    </div>
+                    <div class="kt-widget__info">
+                      <span class="kt-widget__label">Registered Date:</span>
+                      <span class="kt-widget__data">
+                        {{
+                          user?.addedAt | localDate: "MMM D, YYYY h:mm A"
+                        }}</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Widget -->
+            </div>
+          </div>
+        </div>
+        <!--End:: App Aside-->
+
+        <!--Begin:: App Content-->
+        <div class="col-md-8">
+          <!--Begin:: Technical Information Content-->
+          <div class="kt-portlet">
+            <div class="kt-portlet__head">
+              <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">Other Information</h3>
+              </div>
+            </div>
+            <div class="kt-portlet__body pb-0">
+              <div class="kt-section kt-section--first mb-0">
+                <div class="kt-section__body">
+                  <div class="row">
+                    <div class=" col-md-12">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-3 info-label">
+                            Gender:
+                          </div>
+                          <div class="col-md-9 info-text">
+                            {{ user?.gender }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3 info-label">Ethnicity:</div>
+                          <div class="col-md-9 info-text">
+                            {{ user?.ethnicity }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3 info-label">Age:</div>
+                          <div class="col-md-9 info-text">
+                            {{ user?.age }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3 info-label">Address:</div>
+                          <div class="col-md-9 info-text">
+                            {{ user?.address?.street }}
+                            {{ user?.address?.city }}
+                            {{ user?.address?.state }}
+                            {{ user?.address?.zip }}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-3 info-label">
+                            Total Watched Video:
+                          </div>
+                          <div class="col-md-9 info-text">
+                            {{ user?.watchedVideo?.length }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3 info-label">Total Surveys:</div>
+                          <div class="col-md-9 info-text">
+                            {{ user?.allSurveys?.length }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3 info-label">
+                            Total FeedBacks:
+                          </div>
+                          <div class="col-md-9 info-text">
+                            {{ user?.allFeedbacks?.length }}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-3 info-label">App Version:</div>
+                          <div class="col-md-9 info-text">
+                            {{
+                              user?.versionNumber
+                                ? user?.versionNumber
+                                : "2020022020"
+                            }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3 info-label">Device:</div>
+                          <div class="col-md-9 info-text">
+                            {{ user?.platform ? user?.platform : "Android" }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--End:: Technical Information Content-->
+
+          <!--End:: App Content-->
+        </div>
+      </div>
+      <!-- end:: Content -->
+    </div>
+  </div>
+</div>

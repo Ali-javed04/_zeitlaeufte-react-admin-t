@@ -1,0 +1,176 @@
+<div
+  class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch"
+  id="kt_body"
+>
+  <div
+    class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+    id="kt_content"
+  >
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+      <div class="kt-container ">
+        <div class="kt-subheader__main">
+          <h3 class="kt-subheader__title">Users</h3>
+          <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home">
+              <i class="flaticon2-shelter"></i>
+            </a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="" class="kt-subheader__breadcrumbs-link"> Dashboard </a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="/users" class="kt-subheader__breadcrumbs-link"> users </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end:: Subheader -->
+
+    <!-- begin:: Content -->
+    <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+      <!--Begin::Row-->
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile">
+            <div
+              class="kt-portlet__body kt-portlet__body--fit overflow-auto users-outer-wrapper position-relative"
+            >
+              <!--begin: Datatable -->
+
+              <table
+                datatable
+                [dtOptions]="dtOptions"
+                [dtTrigger]="dtTrigger"
+                class="row-border hover"
+              >
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Video Watched</th>
+                    <th>Surveys</th>
+                    <th>Feedbacks</th>
+                    <th>Last Update</th>
+                    <th>Rgister Date</th>
+                    <td>Actions</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of users">
+                    <td class="position-relative">
+                      <img
+                        src="{{
+                          user.userProfile != null
+                            ? user.userProfile
+                            : 'assets/imgs/User_Alternative.png'
+                        }}"
+                        onError="this.onerror=null;this.src='assets/imgs/User_Alternative.png'"
+                        class="user-icon"
+                      />
+                    </td>
+                    <td>
+                      {{ user.displayName }}
+                    </td>
+                    <td>{{ user?.email }}</td>
+                    <td>
+                      {{
+                      0
+                      }}
+                    </td>
+                    <td>
+                    0
+                    </td>
+                    <td>
+                      {{
+                      0
+                      }}
+                    </td>
+                    <td>
+                      {{ user.lastUpdate | localDate: "MMM D, YYYY h:mm A" }}
+                    </td>
+                    <td>
+                      {{ user.addedAt | localDate: "MMM D, YYYY h:mm A" }}
+                    </td>
+                    <td class="actions">
+                      <a
+                        class="edit"
+                        routerLink="/profile"
+                        [queryParams]="{ id: user.email }"
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        title="{{ user.displayName }}"
+                      >Details</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--end: Datatable -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End::Row-->
+    </div>
+    <!-- end:: Content -->
+
+    <!-- <div
+      class="modal fade"
+      id="addDriverModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addDriverModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addDriverModalLabel">Update user</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="outer">
+              <label>Name</label>
+              <input maxlength="40" [(ngModel)]="newUser.name" />
+            </div>
+            <div class="outer" [class.disabled]="true">
+              <label>Phone Number</label>
+              <input maxlength="40" [(ngModel)]="newUser.phoneNumber" />
+            </div>
+
+            <div class="outer">
+              <label>App version</label>
+              <input maxlength="40" [(ngModel)]="newUser.appVersion" />
+            </div>
+
+            <p class="error-text" *ngIf="errorText">{{ errorText }}</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              [disabled]="isUpdating"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              [disabled]="isUpdating"
+              (click)="UpdateNow()"
+              class="btn btn-primary"
+            >
+              {{ isUpdating ? "Please Wait..." : "Update" }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

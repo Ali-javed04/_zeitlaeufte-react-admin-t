@@ -1,0 +1,282 @@
+<div
+  class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch"
+  id="kt_body"
+>
+  <div
+    class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+    id="kt_content"
+  >
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+      <div class="kt-container ">
+        <div class="kt-subheader__main">
+          <h3 class="kt-subheader__title">Dashboard</h3>
+          <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home"
+              ><i class="flaticon2-shelter"></i
+            ></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a routerLink="/home" class="kt-subheader__breadcrumbs-link">
+              Dashboard
+            </a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a routerLink="/home" class="kt-subheader__breadcrumbs-link">
+              Home
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end:: Subheader -->
+
+    <!-- begin:: Content -->
+    <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+      <!--Begin::Dashboard 4-->
+      <!--Begin::Row-->
+      <div class="row">
+        <div class="col-xl-6">
+          <!--begin:: Widgets/Quick Stats-->
+          <div class="row row-full-height">
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <div
+                class="kt-portlet kt-portlet--height-fluid-half kt-portlet--border-bottom-brand"
+              >
+                <div class="kt-portlet__body kt-portlet__body--fluid">
+                  <div class="kt-widget26">
+                    <div class="kt-widget26__content">
+                      <span class="kt-widget26__number">{{
+                        counts.users
+                      }}</span>
+                      <span class="kt-widget26__desc">Total Users</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <div
+                class="kt-portlet kt-portlet--height-fluid-half kt-portlet--border-bottom-success"
+              >
+                <div class="kt-portlet__body kt-portlet__body--fluid">
+                  <div class="kt-widget26">
+                    <div class="kt-widget26__content">
+                      <span class="kt-widget26__number">{{
+                        counts?.lands
+                      }}</span>
+                      <span class="kt-widget26__desc">Total Lands</span>
+                    </div>
+                    <!-- <div class="kt-widget26__chart" style="height:100px; width: 230px;">
+                      <canvas id="kt_chart_quick_stats_3"></canvas>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end:: Widgets/Quick Stats-->
+        </div>
+        <div class="col-xl-6">
+          <!--begin:: Widgets/Order Statistics-->
+          <div class="kt-portlet kt-portlet--height-fluid">
+            <div class="kt-portlet__head">
+              <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">
+                  Statistics Users
+                </h3>
+              </div>
+            </div>
+            <div class="kt-portlet__body kt-portlet__body--fluid">
+              <div class="kt-widget12">
+                <div class="kt-widget12__content">
+                  <div class="kt-widget12__item">
+                    <div class="kt-widget12__info">
+                      <span class="kt-widget12__desc"
+                        >Registered user this month</span
+                      >
+                      <span class="kt-widget12__value">{{
+                        statsCounts[1]?.totalCount
+                      }}</span>
+                    </div>
+                    <div class="kt-widget12__info">
+                      <!-- <span class="kt-widget12__desc">Revenue Margin</span> -->
+                      <div class="kt-widget12__progress">
+                        <div class="progress kt-progress--sm">
+                          <div
+                            class="progress-bar kt-bg-brand"
+                            role="progressbar"
+                            [ngStyle]="{
+                              width: +statsCounts[1]?.percentage + '%'
+                            }"
+                            aria-valuenow="100"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          ></div>
+                        </div>
+                        <span class="kt-widget12__stat">
+                          {{
+                            statsCounts[1]?.percentage
+                              ? statsCounts[1]?.percentage + "%"
+                              : "0%"
+                          }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="kt-widget12__item">
+                    <div class="kt-widget12__info">
+                      <span class="kt-widget12__desc"
+                        >Updated user this month</span
+                      >
+                      <span class="kt-widget12__value">{{
+                        statsCounts[0]?.totalCount
+                      }}</span>
+                    </div>
+                    <div class="kt-widget12__info">
+                      <!-- <span class="kt-widget12__desc">Revenue Margin</span> -->
+                      <div class="kt-widget12__progress">
+                        <div class="progress kt-progress--sm">
+                          <div
+                            class="progress-bar kt-bg-brand"
+                            role="progressbar"
+                            [ngStyle]="{
+                              width: +statsCounts[0]?.percentage + '%'
+                            }"
+                            aria-valuenow="100"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                          ></div>
+                        </div>
+                        <span class="kt-widget12__stat">
+                          {{
+                            statsCounts[0]?.percentage
+                              ? statsCounts[0]?.percentage + "%"
+                              : "0%"
+                          }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="kt-widget12__chart" style="height:250px;">
+                    <canvas #chart id="kt_chart_order_statistics" width="683" height="312"></canvas>
+                  </div> -->
+
+                <div class="kt-widget12__chart" style="height:250px;">
+                  <canvas
+                    #chartOrderStatistics
+                    id="kt_chart_order_statistics"
+                    width="683"
+                    height="312"
+                  ></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end:: Widgets/Order Statistics-->
+        </div>
+      </div>
+      <!--End::Row-->
+
+      <!--Begin::Row-->
+      <div class="row">
+        <div class="col-xl-6 col-lg-12 order-lg-1 order-xl-1">
+          <!--begin:: Widgets/Sale Reports-->
+          <div class="kt-portlet kt-portlet--tabs kt-portlet--height-fluid">
+            <div class="kt-portlet__head">
+              <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">
+                  Recent Users
+                </h3>
+              </div>
+            </div>
+            <div class="kt-portlet__body">
+              <!--Begin::Tab Content-->
+              <div class="tab-content">
+                <!--begin::tab 1 content-->
+                <div class="tab-pane active" id="kt_widget11_tab1_content">
+                  <!--begin::Widget 11-->
+                  <div class="kt-widget11">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <td style="width:5%"></td>
+                            <td style="width:25%">Name</td>
+                            <td style="width:15%">Email</td>
+                            <td style="width:10%">App Version</td>
+                            <td style="width:10%">Device</td>
+                            <td style="width:20%" class="kt-align-right">
+                              Registered Date
+                            </td>
+                            <td style="width:20%" class="kt-align-right">
+                              Last Update
+                            </td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let user of recentAdded">
+                            <td>
+                              <img
+                                src="{{
+                                  user.userProfile != null
+                                    ? user.userProfile
+                                    : 'assets/imgs/User_Alternative.png'
+                                }}"
+                                onError="this.onerror=null;this.src='assets/imgs/User_Alternative.png'"
+                                class="user-icon"
+                              />
+                            </td>
+                            <td>
+                              <a
+                                routerLink="/profile"
+                                [queryParams]="{ id: user.phoneNumber }"
+                                class="kt-widget11__title"
+                                >{{ user.displayName }}</a
+                              >
+                            </td>
+                            <td>{{ user?.email }}</td>
+                            <td>
+                              {{
+                                user.versionNumber
+                                  ? user.versionNumber
+                                  : "0.0.1"
+                              }}
+                            </td>
+                            <td class="capitalize">
+                              {{ user?.platform ? user?.platform : "Android" }}
+                            </td>
+                            <td
+                              class="kt-align-right kt-font-brand kt-font-bold"
+                            >
+                              {{
+                                user.addedAt | localDate: "MMM D, YYYY h:mm A"
+                              }}
+                            </td>
+                            <td
+                              class="kt-align-right kt-font-brand kt-font-bold"
+                            >
+                              {{
+                                user.lastUpdate
+                                  | localDate: "MMM D, YYYY h:mm A"
+                              }}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <!--end::Widget 11-->
+                </div>
+              </div>
+              <!--End::Tab Content-->
+            </div>
+          </div>
+          <!--end:: Widgets/Sale Reports-->
+        </div>
+      </div>
+      <!--End::Row-->
+    </div>
+    <!-- end:: Content -->
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div
+  class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch"
+  id="kt_body"
+>
+  <div
+    class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+    id="kt_content"
+  >
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+      <div class="kt-container ">
+        <div class="kt-subheader__main flex-prop">
+          <div>
+            <div class="kt-subheader__main">
+              <h3 class="kt-subheader__title">Lands</h3>
+              <div class="kt-subheader__breadcrumbs">
+                <a href="#" class="kt-subheader__breadcrumbs-home">
+                  <i class="flaticon2-shelter"></i>
+                </a>
+                <span class="kt-subheader__breadcrumbs-separator"></span>
+                <a href="" class="kt-subheader__breadcrumbs-link">
+                  Dashboard
+                </a>
+                <span class="kt-subheader__breadcrumbs-separator"></span>
+                <a
+                  href="/lands"
+                  class="kt-subheader__breadcrumbs-link"
+                  routerLink="/add-lands"
+                >
+                  Lands
+                </a>
+              </div>
+            </div>
+          </div>
+          <div>
+            <span class="add-new-btn" routerLink="/add-lands"
+              >Add New Land</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end:: Subheader -->
+
+    <!-- begin:: Content -->
+    <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+      <!--Begin::Row-->
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile">
+            <div
+              class="kt-portlet__body kt-portlet__body--fit overflow-auto users-outer-wrapper position-relative"
+            >
+              <!--begin: Datatable -->
+
+              <table
+                datatable
+                [dtOptions]="dtOptions"
+                [dtTrigger]="dtTrigger"
+                class="row-border hover"
+              >
+                <thead>
+                  <tr>
+                    <th>Land Image</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Total Points</th>
+                    <th>Date Added</th>
+                    <td>Actions</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let land of lands">
+                    <td class="position-relative">
+                      <img
+                        src="{{
+                          land.imageUrl != null
+                            ? land.imageUrl
+                            : 'assets/imgs/login-logo.png'
+                        }}"
+                        onError="this.onerror=null;this.src='assets/imgs/login-logo.png'"
+                        class="user-icon"
+                      />
+                    </td>
+                    <td>
+                      {{ land.title }}
+                    </td>
+                    <td>{{ land?.description | substring: [60] }}</td>
+                    <td>
+                      {{ land?.points?.length ? land?.points?.length : 0 }}
+                    </td>
+                    <td>
+                      {{ land.dateAdded | localDate: "MMM D, YYYY h:mm A" }}
+                    </td>
+                    <td class="actions">
+                      <span
+                        class="edit"
+                        routerLink="/land-detail"
+                        [queryParams]="{ id: land.id }"
+                        >Detail</span
+                      >
+                      <span
+                        class="edit"
+                        routerLink="/add-lands"
+                        [queryParams]="{ editingLandId: land.id }"
+                        >Edit</span
+                      >
+                      <span class="delete" (click)="deleteLand(land)"
+                        >Delete</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--end: Datatable -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End::Row-->
+    </div>
+    <!-- end:: Content -->
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="d-flex h">
+  <img src="assets/imgs/login-logo.png" class="logo-img">
+  <div>
+    <!-- <p>Signin</p> -->
+    <input placeholder="Email" [(ngModel)]="userAuth.email" type="email">
+    <input placeholder="Password" [(ngModel)]="userAuth.password" type="password">
+    <button class="btn btn-brand submit-button" (click)=" signIn() ">Signin</button>
+  </div>
+</div>

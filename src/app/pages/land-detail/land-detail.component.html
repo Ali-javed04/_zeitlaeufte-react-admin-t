@@ -1,0 +1,214 @@
+<div
+  class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch"
+  id="kt_body"
+>
+  <div
+    class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+    id="kt_content"
+  >
+    <!-- begin:: Subheader -->
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+      <div class="kt-container ">
+        <div class="kt-subheader__main">
+          <h3 class="kt-subheader__title">{{ land?.title }}</h3>
+        </div>
+      </div>
+    </div>
+    <!-- end:: Subheader -->
+
+    <!-- begin:: Content -->
+    <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+      <div class="row">
+        <!--Begin:: App Aside-->
+        <div class="col-md-4">
+          <div class="kt-portlet">
+            <div class="kt-portlet__body kt-portlet__body--fit-y pt-5 pb-4">
+              <!--begin::Widget -->
+              <div class="kt-widget kt-widget--user-profile-1">
+                <div class="kt-widget__head">
+                  <div class="kt-widget__media">
+                    <img
+                      src="{{
+                        land?.imageUrl != null
+                          ? land?.imageUrl
+                          : 'assets/imgs/User_Alternative.png'
+                      }}"
+                      onError="this.onerror=null;this.src='assets/imgs/User_Alternative.png'"
+                      alt="image"
+                    />
+                    <!-- <img src="./assets/media/users/100_4.jpg" alt="image"> -->
+                  </div>
+                  <div class="kt-widget__content">
+                    <div class="kt-widget__section">
+                      <span class="kt-widget__username">
+                        {{ land?.title }}
+                      </span>
+                      <span class="kt-widget__subtitle">
+                        {{ land?.dateAdded | fromNow }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end::Widget -->
+            </div>
+          </div>
+        </div>
+        <!--End:: App Aside-->
+
+        <!--Begin:: App Content-->
+        <div class="col-md-8">
+          <!--Begin:: Technical Information Content-->
+          <div class="kt-portlet">
+            <div class="kt-portlet__head">
+              <div class="kt-portlet__head-label">
+                <h3 class="kt-portlet__head-title">Other Information</h3>
+              </div>
+            </div>
+            <div class="kt-portlet__body pb-0">
+              <div class="kt-section kt-section--first mb-0">
+                <div class="kt-section__body">
+                  <div class="row">
+                    <div class=" col-md-12">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-3 info-label">
+                            Description:
+                          </div>
+                          <div class="col-md-9 info-text">
+                            {{ land?.description }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3 info-label">Total Points:</div>
+                          <div class="col-md-9 info-text">
+                            {{
+                              land?.points?.length ? land?.points?.length : 0
+                            }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--End:: Technical Information Content-->
+
+          <!--End:: App Content-->
+        </div>
+      </div>
+      <!-- end:: Content -->
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <!--Begin::Row Activity-->
+        <div class="kt-portlet">
+          <div class="kt-portlet__head flex-prop">
+            <div class="kt-portlet__head-label">
+              <h3 class="kt-portlet__head-title">Points List</h3>
+            </div>
+            <div>
+              <span
+                class="add-new-btn"
+                routerLink="/add-new-point"
+                [queryParams]="{ landId: land?.id }"
+                >Add New Point</span
+              >
+            </div>
+          </div>
+          <div class="kt-portlet__body table-padd">
+            <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+              <div class="row">
+                <div class="col-xl-12">
+                  <div
+                    class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile"
+                  >
+                    <div
+                      class="kt-portlet__body kt-portlet__body--fit overflow-auto users-outer-wrapper position-relative"
+                    >
+                      <table
+                        datatable
+                        [dtOptions]="dtOptions"
+                        [dtTrigger]="dtTrigger"
+                        class="row-border hover"
+                      >
+                        <thead>
+                          <tr>
+                            <th>Number</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Audio Url</th>
+                            <th>Video Url</th>
+                            <th>Image Url</th>
+                            <th>Date Added</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let point of land?.points">
+                            <td class="position-relative">
+                              {{ point?.indexPosition }}
+                            </td>
+                            <td>
+                              {{ point?.name }}
+                            </td>
+                            <td>
+                              {{ point?.desc | substring: [60] }}
+                            </td>
+                            <td>
+                              <a
+                                *ngIf="point?.audioURL"
+                                href="{{point?.audioURL}}"
+                                target="_blank"
+                                >Audio</a
+                              >
+                            </td>
+                            <td>
+                              <a
+                                *ngIf="point?.videoURL"
+                                href="{{point?.videoURL}}"
+                                target="_blank"
+                                >Video</a
+                              >
+                            </td>
+                            <td>
+                              <a
+                                *ngIf="point?.imageURL"
+                                href="{{point?.imageURL}}"
+                                target="_blank"
+                                >Image</a
+                              >
+                            </td>
+                            <td>{{ point?.dateAdded }}</td>
+                            <td class="actions">
+                              <span
+                                class="edit"
+                                routerLink="/add-new-point"
+                                [queryParams]="{
+                                  editingPointId: point?.id,
+                                  landId: land?.id
+                                }"
+                                >Edit</span
+                              >
+                              <span class="delete" (click)="deletePoint(point)"
+                                >Delete</span
+                              >
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--End::Row Activity-->
+      </div>
+    </div>
+  </div>
+</div>

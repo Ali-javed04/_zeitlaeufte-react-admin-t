@@ -1,0 +1,237 @@
+:root {
+  --theme-color: #646c9a;
+}
+
+body {
+  background-image   : url(./assets/media/bg/bg-2.jpg);
+  background-position: center top;
+  background-size    : 100% 350px;
+
+  .kt-wrapper#kt_wrapper {
+    margin-bottom: 315px;
+  }
+
+  @media (max-width: 768px) {
+    .kt-wrapper#kt_wrapper {
+      margin-bottom: 550px;
+    }
+  }
+}
+
+.dataTables_paginate.paging_full_numbers {
+  padding-top  : 0;
+  line-height  : 5px;
+  margin-bottom: 15px;
+}
+
+.dataTables_length {
+  display     : inline;
+  padding-left: 16px;
+}
+
+.dataTables_info {
+  display     : inline;
+  float       : unset !important;
+  padding-left: 15px;
+  line-height : 25px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0.5em 0.7em !important;
+}
+
+.kt-menu__item:focus {
+  outline: none;
+}
+
+.users-outer-wrapper {
+  padding: 20px 20px !important;
+
+  .dataTables_filter {
+    float: left !important;
+  }
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+
+.round {
+  --background   : var(--theme-color);
+  --border-radius: 3px;
+  height         : 50px;
+  width          : 100%;
+
+  button {
+    --border-radius: 3px;
+  }
+
+  span {
+    color      : #fff;
+    font-size  : 16px;
+    font-weight: 600;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  opacity       : 0.7;
+}
+
+.cirlc-buttons-outer {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  margin-top     : 15px;
+
+  .circle-button {
+    box-shadow     : 0px 0px 2px #000 !important;
+    border-radius  : 50%;
+    height         : 60px;
+    width          : 60px;
+    background     : var(--theme-color);
+    display        : inline-flex;
+    text-align     : center;
+    justify-content: center;
+    align-items    : center;
+    font-size      : 26px;
+
+    ion-icon {
+      color: #fff;
+    }
+  }
+
+  .circle-button:active {
+    background: var(--active-color);
+  }
+}
+
+.my-toast-wrapper {
+  --background : black;
+  color        : #ffff;
+  border-radius: 6px;
+}
+
+.scroll-disable {
+  --overflow: hidden;
+}
+
+
+ion-input {
+  border-bottom: 1px solid #dedede;
+  margin-bottom: 15px;
+}
+
+.transparent-header {
+  ion-toolbar {
+    --border-width: 0 !important;
+  }
+
+  &.header-md {
+    display: none !important;
+  }
+}
+
+.selected-option {
+  background: var(--theme-color) !important;
+  border    : 1px solid var(--theme-color) !important;
+}
+
+.selected-checkbox {
+  border: 1px solid var(--theme-color) !important;
+
+  .tick {
+    color: var(--theme-color) !important;
+  }
+}
+
+.full-opacity {
+  opacity: 1 !important;
+}
+
+.gray-color {
+  color: #929090 !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.btn-outer {
+  margin-top     : 25px;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+
+  .custome-btn {
+    width        : 158px;
+    height       : 48px;
+    background   : var(--theme-color);
+    color        : #fff;
+    border-radius: 6px;
+  }
+}
+
+.status-outer {
+  display      : flex;
+  align-items  : center;
+  margin-bottom: 8px;
+  cursor       : pointer;
+
+  .circle {
+    display        : inline-flex;
+    border         : 1px solid #eeee;
+    width          : 17px;
+    height         : 17px;
+    border-radius  : 50%;
+    margin-right   : 14px;
+    justify-content: center;
+    align-items    : center;
+
+    .filled {
+      display      : inline-block;
+      height       : 9px;
+      width        : 9px;
+      background   : var(--theme-color);
+      border-radius: 50%;
+    }
+  }
+}
+
+.status-product {
+  .status-heading {
+    margin-bottom: 5px;
+    margin-top   : 15px;
+  }
+
+  .status-outer {
+    display      : flex;
+    align-items  : center;
+    margin-bottom: 8px;
+
+    .circle {
+      display        : inline-flex;
+      border         : 1px solid #eeee;
+      width          : 17px;
+      height         : 17px;
+      border-radius  : 50%;
+      margin-right   : 14px;
+      justify-content: center;
+      align-items    : center;
+
+      .filled {
+        display      : inline-block;
+        height       : 9px;
+        width        : 9px;
+        background   : var(--theme-color);
+        border-radius: 50%;
+      }
+    }
+
+    .text {
+      cursor: pointer;
+    }
+
+  }
+}

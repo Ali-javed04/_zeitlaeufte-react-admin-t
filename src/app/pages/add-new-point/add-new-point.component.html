@@ -1,0 +1,227 @@
+<div
+  class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch"
+  id="kt_body"
+>
+  <div
+    class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+    id="kt_content"
+  >
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+      <div class="kt-container ">
+        <div class="kt-subheader__main flex-prop">
+          <div>
+            <h3 class="kt-subheader__title">
+              {{ editingPointId ? "Update Point" : "Add New Point" }}
+            </h3>
+            <div class="kt-subheader__breadcrumbs">
+              <a href="#" class="kt-subheader__breadcrumbs-home">
+                <i class="flaticon2-shelter"></i>
+              </a>
+              <span class="kt-subheader__breadcrumbs-separator"></span>
+              <a routerLink="/homes" class="kt-subheader__breadcrumbs-link">
+                Dashboard
+              </a>
+              <span class="kt-subheader__breadcrumbs-separator"></span>
+              <a routerLink="/lands" class="kt-subheader__breadcrumbs-link">
+                Lands
+              </a>
+              <span class="kt-subheader__breadcrumbs-separator"></span>
+              <a class="kt-subheader__breadcrumbs-link">
+                {{ editingPointId ? "Update Point" : "Add New Point" }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+      <div class="row form-flex">
+        <div class="col-sm-6">
+          <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile">
+            <div
+              class="kt-portlet__body kt-portlet__body--fit overflow-auto users-outer-wrapper position-relative form-sect"
+            >
+              <div class="outer">
+                <h1>Point Information</h1>
+                <input
+                  type="number"
+                  [(ngModel)]="newPoint.indexPosition"
+                  placeholder="Enter position index of land"
+                />
+                <input
+                  [(ngModel)]="newPoint.name"
+                  placeholder="Enter name of Point"
+                />
+                <input
+                  type="text"
+                  [(ngModel)]="newPoint.desc"
+                  placeholder="Enter description of Point"
+                />
+
+                <h1>Point Image</h1>
+                <div class="product-add-img-list-outer">
+                  <div
+                    class="list-add-img"
+                    *ngIf="editingPointId && newPoint.imageURL"
+                  >
+                    <span
+                      class="img"
+                      [ngStyle]="{
+                        'background-image': 'url(' + newPoint.imageURL + ')'
+                      }"
+                    >
+                      <span class="cross-icon" (click)="removeUploadedImg()">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </span>
+                  </div>
+
+                  <div class="add-prod-imgs" *ngIf="!newPoint.imageURL && !localImage">
+                    <input
+                      type="file"
+                      id="productaddimage"
+                      accept="image/*"
+                      multiple
+                      maxlength="1"
+                    />
+                  </div>
+
+                  <div class="list-add-img" *ngIf="localImage">
+                    <span
+                      class="img"
+                      [ngStyle]="{
+                        'background-image': 'url(' + localImage + ')'
+                      }"
+                    >
+                      <span class="cross-icon" (click)="removeImg()">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+
+                <h1>Point Audio</h1>
+                <div class="product-add-img-list-outer">
+                  <div
+                    class="list-add-img"
+                    *ngIf="editingPointId && newPoint.audioURL"
+                  >
+                    <span class="audio">
+                      <audio controls>
+                        <source
+                          src="{{ newPoint.audioURL }}"
+                          type="audio/ogg"
+                        />
+                      </audio>
+                      <span class="cross-icon" (click)="removeUploadedAudio()">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </span>
+                  </div>
+
+                  <div class="add-prod-imgs" *ngIf="!newPoint.audioURL || !localAudio">
+                    <input
+                      type="file"
+                      id="productaddAudio"
+                      accept="audio/*"
+                      maxlength="1"
+                    />
+                  </div>
+
+                  <!-- <div class="list-add-img" *ngIf="localAudio">
+                    <span class="audio">
+                      <audio controls>
+                        <source [src]="localAudio" type="audio/ogg" />
+                      </audio>
+                      <span class="cross-icon" (click)="removeAudio()">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </span>
+                  </div> -->
+                </div>
+
+                <h1>Point Video</h1>
+                <div class="product-add-img-list-outer">
+                  <div
+                    class="list-add-img"
+                    *ngIf="editingPointId && newPoint.videoURL"
+                  >
+                    <span class="audio">
+                      <video controls>
+                        <source
+                          src="{{ newPoint.videoURL }}"
+                          type="video/mp4"
+                        />
+                      </video>
+                      <span class="cross-icon" (click)="removeUploadedVideos()">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </span>
+                  </div>
+
+                  <div class="add-prod-imgs" *ngIf="!newPoint.videoURL && !localVideo">
+                    <input
+                      type="file"
+                      id="productaddVideo"
+                      accept="video/*"
+                      maxlength="1"
+                    />
+                  </div>
+
+                  <!-- <div class="list-add-img" *ngIf="localVideo">
+                    <span class="audio">
+                      <video controls>
+                        <source src="{{ localVideo }}" type="video/mp4" />
+                      </video>
+                      <span class="cross-icon" (click)="removeVideos()">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </span>
+                  </div> -->
+                </div>
+
+                <br />
+                <label for="bgcolor">Select background color of page:</label>
+                <input
+                  class="color-width-height"
+                  type="color"
+                  id="bgcolor"
+                  name="bgcolor"
+                  value="{{ newPoint.backgroundColor }}"
+                />
+                <br />
+                <label for="tcolor">Select color of text:</label>
+                <input
+                  class="color-width-height"
+                  type="color"
+                  id="tcolor"
+                  name="tcolor"
+                  value="{{ newPoint.titleColor }}"
+                />
+
+                <p class="uploading-text">{{ uploadingText }}</p>
+
+                <div class="flex-prop">
+                  <button
+                    [disabled]="isSaving"
+                    class="add-new-btn"
+                    (click)="savePoint()"
+                  >
+                    {{
+                      isSaving
+                        ? "Please wait"
+                        : editingPointId
+                        ? "Update"
+                        : "Save"
+                    }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

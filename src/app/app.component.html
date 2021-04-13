@@ -1,0 +1,58 @@
+<div *ngIf="isAuthenticated" class="position-relative" style=" min-height: 100vh;">
+    <!-- begin:: Header Mobile -->
+    <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed">
+        <div class="kt-header-mobile__logo">
+            <a href="/metronic/preview/demo4/index.html">
+                <img alt="Logo" src="./assets/imgs/login-logo.png" width="25px" />
+            </a>
+        </div>
+        <div class="kt-header-mobile__toolbar">
+            <button class="kt-header-mobile__toolbar-toggler" id="kt_header_mobile_toggler"><span></span></button>
+            <button class="kt-header-mobile__toolbar-topbar-toggler" id="kt_header_mobile_topbar_toggler"><i
+                    class="flaticon-more-1"></i></button>
+        </div>
+    </div>
+    <!-- end:: Header Mobile -->
+
+    <!-- begin:: Content -->
+    <div class="kt-grid kt-grid--hor kt-grid--root" style="overflow: hidden;">
+        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+                <!-- begin:: Header -->
+                <div *ngIf="isAuthenticated">
+                    <app-header></app-header>
+                </div>
+                <!-- end:: Header -->
+
+                <!-- begin:: Content -->
+                <router-outlet></router-outlet>
+                <!-- end:: Content -->
+            </div>
+        </div>
+    </div>
+    <!-- end:: Content -->
+
+    <!-- begin:: Footer -->
+    <div class="kt-footer  kt-footer--extended  kt-grid__item" id="kt_footer"
+        style="background-image: url('./assets/media/bg/bg-2.jpg');">
+        <div class="kt-footer__top">
+            <div class="kt-container ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="kt-footer__section">
+                            <h3 class="kt-footer__title">About</h3>
+                            <div class="kt-footer__content">
+                                Lorem Ipsum is simply dummy text of the printing<br>
+                                and typesetting and typesetting industry has been the <br>
+                                industry's standard dummy text ever since the 1500s,<br>
+                                when an unknown printer took a galley of type.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end:: Footer -->
+</div>
+<router-outlet *ngIf="!isAuthenticated"></router-outlet>

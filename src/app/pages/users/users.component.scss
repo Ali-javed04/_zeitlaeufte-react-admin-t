@@ -1,0 +1,56 @@
+.user-icon {
+  width        : 32px;
+  border-radius: 50%;
+  height       : 32px;
+}
+
+.filter-position-c {
+  position: absolute;
+  top     : 13px;
+  z-index : 99;
+  right   : 15px;
+}
+
+.actions {
+  text-align: center;
+
+  span {
+    // font-size   : 18px;
+    margin-right: 10px;
+    cursor      : pointer;
+  }
+
+  .edit {
+    color: blue;
+  }
+
+  .delete {
+    color: red;
+  }
+}
+
+.modal-body {
+  .outer {
+    display       : flex;
+    flex-direction: column;
+    margin-bottom : 15px;
+  }
+
+  .password-field {
+    position: relative;
+
+    .eye {
+      position  : absolute;
+      right     : 11px;
+      margin-top: 28px;
+    }
+  }
+}
+
+.error-text {
+  color: red;
+}
+
+.name {
+  text-transform: capitalize;
+}

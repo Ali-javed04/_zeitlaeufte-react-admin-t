@@ -1,0 +1,166 @@
+<div
+  class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch"
+  id="kt_body"
+>
+  <div
+    class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+    id="kt_content"
+  >
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+      <div class="kt-container ">
+        <div class="kt-subheader__main flex-prop">
+          <div>
+            <h3 class="kt-subheader__title">
+              {{ editingLandId ? "Update Land" : "Add New Land" }}
+            </h3>
+            <div class="kt-subheader__breadcrumbs">
+              <a href="#" class="kt-subheader__breadcrumbs-home">
+                <i class="flaticon2-shelter"></i>
+              </a>
+              <span class="kt-subheader__breadcrumbs-separator"></span>
+              <a routerLink="/homes" class="kt-subheader__breadcrumbs-link">
+                Dashboard
+              </a>
+              <span class="kt-subheader__breadcrumbs-separator"></span>
+              <a routerLink="/lands" class="kt-subheader__breadcrumbs-link">
+                Lands
+              </a>
+              <span class="kt-subheader__breadcrumbs-separator"></span>
+              <a class="kt-subheader__breadcrumbs-link">
+                {{ editingLandId ? "Update Land" : "Add New Land" }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+      <div class="row form-flex">
+        <div class="col-sm-6">
+          <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile">
+            <div
+              class="kt-portlet__body kt-portlet__body--fit overflow-auto users-outer-wrapper position-relative form-sect"
+            >
+              <div class="outer">
+                <h1>Land Information</h1>
+                <input
+                  [(ngModel)]="newLand.title"
+                  placeholder="Enter title of Land"
+                />
+                <label>Enter the Description</label>
+                <div [froalaEditor]="imgOptions" [(froalaModel)]="newLand.description"  >Enter Discription</div>
+             
+                <div class="status-product">
+                  <div class="status-heading">Protection Type</div>
+                  <div
+                    class="status-outer"
+                    (click)="newLand.protectionType = 'open'"
+                  >
+                    <span class="circle">
+                      <span
+                        class="filled"
+                        *ngIf="newLand.protectionType == 'open'"
+                      ></span>
+                    </span>
+                    <span class="text">Open</span>
+                  </div>
+                  <div
+                    class="status-outer"
+                    (click)="newLand.protectionType = 'password'"
+                  >
+                    <span class="circle">
+                      <span
+                        class="filled"
+                        *ngIf="newLand.protectionType == 'password'"
+                      ></span>
+                    </span>
+                    <span class="text">Password</span>
+                  </div>
+                  <div
+                    class="status-outer"
+                    (click)="newLand.protectionType = 'qrcode'"
+                  >
+                    <span class="circle">
+                      <span
+                        class="filled"
+                        *ngIf="newLand.protectionType == 'qrcode'"
+                      ></span>
+                    </span>
+                    <span class="text">QR Code</span>
+                  </div>
+
+                  <input
+                    *ngIf="newLand.protectionType != 'open'"
+                    [(ngModel)]="newLand.passwordOrQrCode"
+                    placeholder="{{
+                      newLand.protectionType == 'password'
+                        ? 'Enter password here'
+                        : 'Enter QR code string here'
+                    }}"
+                  />
+                </div>
+
+                <h1>Land Image</h1>
+                <div class="product-add-img-list-outer">
+                  <div class="list-add-img" *ngIf="editingLandId">
+                    <span
+                      class="img"
+                      [ngStyle]="{
+                        'background-image': 'url(' + newLand.imageUrl + ')'
+                      }"
+                    >
+                      <span class="cross-icon" (click)="removeUploadedImg()">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </span>
+                  </div>
+
+                  <div class="add-prod-imgs">
+                    <input
+                      type="file"
+                      id="productaddimage"
+                      accept="image/*"
+                      multiple
+                      maxlength="1"
+                    />
+                  </div>
+
+                  <div class="list-add-img" *ngIf="localImages?.length">
+                    <span
+                      *ngFor="let img of localImages; let i = index"
+                      class="img"
+                      [ngStyle]="{ 'background-image': 'url(' + img + ')' }"
+                    >
+                      <span class="cross-icon" (click)="removeImg(i)">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+
+                <p class="uploading-text">{{ uploadingText }}</p>
+
+                <div class="flex-prop">
+                  <button
+                    [disabled]="isSaving"
+                    class="add-new-btn"
+                    (click)="saveLand()"
+                  >
+                    {{
+                      isSaving
+                        ? "Please wait"
+                        : editingLandId
+                        ? "Update"
+                        : "Save"
+                    }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
