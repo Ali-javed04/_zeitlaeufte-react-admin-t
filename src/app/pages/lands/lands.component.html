@@ -85,7 +85,7 @@
                     <td>
                       {{ land.title }}
                     </td>
-                    <td>{{ land?.description | substring: [60] }}</td>
+                    <td ><div  [froalaView]="land?.description | substring: [60] "></div> </td>
                     <td>
                       {{ land?.points?.length ? land?.points?.length : 0 }}
                     </td>

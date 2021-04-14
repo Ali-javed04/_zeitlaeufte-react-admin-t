@@ -8,6 +8,8 @@ import { LandsComponent } from "./pages/lands/lands.component";
 import { AddLandComponent } from './pages/add-land/add-land.component';
 import { LandDetailComponent } from './pages/land-detail/land-detail.component';
 import { AddNewPointComponent } from './pages/add-new-point/add-new-point.component';
+import { AddQuestionComponent } from "./pages/add-question/add-question.component";
+import { QuestionsComponent } from "./pages/questions/questions.component";
 
 const routes: Routes = [
   {
@@ -47,6 +49,14 @@ const routes: Routes = [
   {
     path: "add-new-point",
     component: AddNewPointComponent
+  },
+  {
+    path: "add-question",
+    component: AddQuestionComponent
+  },
+  {
+    path: "questions",
+    component: QuestionsComponent
   }
 ];
 

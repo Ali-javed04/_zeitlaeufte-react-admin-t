@@ -30,6 +30,12 @@ interface ILand{
   passwordOrQrCode?:string;
   dateAdded?:string;
 }
+interface IQuestion{
+  id?: string
+  title?: string
+  options?: any[]
+  answer?: string
+}
 
 interface ILandMarks{
   id?:string;

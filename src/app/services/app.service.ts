@@ -9,6 +9,7 @@ export class AppService {
   public user: EventEmitter<any> = new EventEmitter();
   public users: IUser[] = [];
   public lands: ILand[] = [];
+  public questions: IQuestion[] = [];
 
   constructor(private router: Router) {}
 

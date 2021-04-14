@@ -22,6 +22,8 @@ import { LandsComponent } from './pages/lands/lands.component';
 import { AddLandComponent } from './pages/add-land/add-land.component';
 import { LandDetailComponent } from './pages/land-detail/land-detail.component';
 import { AddNewPointComponent } from './pages/add-new-point/add-new-point.component'
+import { QuestionsComponent } from './pages/questions/questions.component';
+import { AddQuestionComponent } from './pages/add-question/add-question.component';
 import { SubstringPipe } from './pipes/substring.pipes';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
@@ -43,6 +45,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     AddLandComponent,
     LandDetailComponent,
     AddNewPointComponent,
+    QuestionsComponent,
+    AddQuestionComponent
   ],
   imports: [
     BrowserModule,

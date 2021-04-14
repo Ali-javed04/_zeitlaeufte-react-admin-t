@@ -51,6 +51,7 @@ export class AddNewPointComponent implements OnInit {
         });
       }
     }
+    
 
     setTimeout(() => {
       $(document).ready(() => {
@@ -93,6 +94,15 @@ export class AddNewPointComponent implements OnInit {
         }
       });
     }, 1000);
+  }
+  
+  public imgOptions: Object = {
+    angularIgnoreAttrs: ['style', 'ng-reflect-froala-editor', 'ng-reflect-froala-model'],
+    immediateAngularModelUpdate: true,
+    events: {
+      "contentChanged": () => {
+      }
+    }
   }
 
   updateLand() {

@@ -53,11 +53,9 @@
                   [(ngModel)]="newPoint.name"
                   placeholder="Enter name of Point"
                 />
-                <input
-                  type="text"
-                  [(ngModel)]="newPoint.desc"
-                  placeholder="Enter description of Point"
-                />
+                <label>Enter the Description</label>
+                <div [froalaEditor]="imgOptions" [(froalaModel)]="newPoint.desc"  >Enter Discription</div>
+             
 
                 <h1>Point Image</h1>
                 <div class="product-add-img-list-outer">

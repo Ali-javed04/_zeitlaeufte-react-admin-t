@@ -34,7 +34,7 @@ export class FirebaseService {
 
   getApiKey() {
     return new Promise((resolve, reject) => {
-      resolve('1');
+      //resolve();
     });
   }
 
@@ -115,6 +115,35 @@ export class FirebaseService {
     });
   }
 
+  getAllQuestions() {
+    console.log("server ")
+    let questions: any[] = [];
+    return new Promise((resolve, reject) => {
+      firebase
+        .firestore()
+        .collection("questions")
+        .get()
+        .then(
+          records => {
+            if (records.size) {
+              records.forEach(record => {
+                console.log("got record ", record.data())
+                questions.push(record.data());
+              });
+              this.appService.questions = questions;
+              resolve(questions);
+            } else {
+              resolve(questions);
+            }
+          },
+          err => {
+            console.log("erroror ", err)
+            reject(questions);
+          }
+        );
+    });
+  }
+
   getLandById(id:string) {
     return new Promise((resolve, reject) => {
       firebase
@@ -153,6 +182,25 @@ export class FirebaseService {
     });
   }
 
+  addNewQuestion(question: IQuestion) {
+    question.id = `id-${this.commonServie.getTimeStamp()}`;
+    return new Promise((resolve, reject) => {
+      firebase
+        .firestore()
+        .collection("questions")
+        .doc(question.id)
+        .set(question)
+        .then(
+          () => {
+            resolve(question);
+          },
+          err => {
+            resolve(question);
+          }
+        );
+    });
+  }
+
   updateLand(id: string, props: any) {
     return new Promise((resolve, reject) => {
       firebase
@@ -162,10 +210,10 @@ export class FirebaseService {
         .update(props)
         .then(
           () => {
-            resolve('1');
+            resolve(id);
           },
           err => {
-            resolve('1');
+            resolve(id);
           }
         );
     });
@@ -180,7 +228,26 @@ export class FirebaseService {
         .delete()
         .then(
           resp => {
-            resolve('1');
+            resolve(id);
+          },
+          err => {
+            console.log(`[Firebase==>products delete]: ${err}`);
+            reject(err);
+          }
+        );
+    });
+  }
+  
+  deleteQuestion(id: string) {
+    return new Promise((resolve, reject) => {
+      firebase
+        .firestore()
+        .collection("questions")
+        .doc(id)
+        .delete()
+        .then(
+          resp => {
+            resolve(id);
           },
           err => {
             console.log(`[Firebase==>products delete]: ${err}`);

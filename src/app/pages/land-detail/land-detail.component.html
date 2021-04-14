@@ -76,7 +76,8 @@
                             Description:
                           </div>
                           <div class="col-md-9 info-text">
-                            {{ land?.description }}
+                            
+                              <div  [froalaView]="land?.description "></div>  
                           </div>
                         </div>
                         <div class="row">
@@ -156,7 +157,7 @@
                               {{ point?.name }}
                             </td>
                             <td>
-                              {{ point?.desc | substring: [60] }}
+                              <div  [froalaView]="point?.desc | substring: [60]"></div>                              
                             </td>
                             <td>
                               <a
