@@ -15,7 +15,8 @@ export class AddLandComponent implements OnInit {
   localImages: string[] = [];
   newLand: ILand = {
     imageUrl: "",
-    protectionType: "open"
+    protectionType: "open",
+    imageDetail:""
   };
 
   isSaving?: boolean = false;

@@ -29,6 +29,8 @@ interface ILand{
   protectionType?:string; //open, password, qrcode
   passwordOrQrCode?:string;
   dateAdded?:string;
+  imageDetail?: string
+
 }
 interface IQuestion{
   id?: string
