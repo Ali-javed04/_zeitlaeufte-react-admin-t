@@ -49,7 +49,8 @@
                   placeholder="Enter title of Land"
                 />
                 <label>Enter the Description</label>
-                <div [froalaEditor]="imgOptions" [(froalaModel)]="newLand.description"  >Enter Discription</div>
+                <textarea name="" id="" class="form-control" [(ngModel)]="newLand.description"></textarea>
+                <!-- <div [froalaEditor]="imgOptions" [(froalaModel)]="newLand.description"  >Enter Discription</div> -->
                 <label class="mt-2"> Add Image more details text </label>
             
                     <textarea placeholder="Add Image more details text" [(ngModel)]="newLand.imageDetail" class="form-control"></textarea>

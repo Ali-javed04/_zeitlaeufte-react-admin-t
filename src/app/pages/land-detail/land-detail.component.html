@@ -1,11 +1,5 @@
-<div
-  class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch"
-  id="kt_body"
->
-  <div
-    class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
-    id="kt_content"
-  >
+<div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch" id="kt_body">
+  <div class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <!-- begin:: Subheader -->
     <div class="kt-subheader   kt-grid__item" id="kt_subheader">
       <div class="kt-container ">
@@ -27,15 +21,11 @@
               <div class="kt-widget kt-widget--user-profile-1">
                 <div class="kt-widget__head">
                   <div class="kt-widget__media">
-                    <img
-                      src="{{
+                    <img src="{{
                         land?.imageUrl != null
                           ? land?.imageUrl
                           : 'assets/imgs/User_Alternative.png'
-                      }}"
-                      onError="this.onerror=null;this.src='assets/imgs/User_Alternative.png'"
-                      alt="image"
-                    />
+                      }}" onError="this.onerror=null;this.src='assets/imgs/User_Alternative.png'" alt="image" />
                     <!-- <img src="./assets/media/users/100_4.jpg" alt="image"> -->
                   </div>
                   <div class="kt-widget__content">
@@ -76,15 +66,16 @@
                             Description:
                           </div>
                           <div class="col-md-9 info-text">
-                            
-                              <div  [froalaView]="land?.description "></div>  
+                            <p  [innerHtml]="land?.description"></p>
+                            <!-- <div [froalaView]="land?.description "></div> -->
                           </div>
                         </div>
+
                         <div class="row">
                           <div class="col-md-3 info-label">Total Points:</div>
                           <div class="col-md-9 info-text">
                             {{
-                              land?.points?.length ? land?.points?.length : 0
+                            land?.points?.length ? land?.points?.length : 0
                             }}
                           </div>
                         </div>
@@ -112,30 +103,18 @@
               <h3 class="kt-portlet__head-title">Points List</h3>
             </div>
             <div>
-              <span
-                class="add-new-btn"
-                routerLink="/add-new-point"
-                [queryParams]="{ landId: land?.id }"
-                >Add New Point</span
-              >
+              <span class="add-new-btn" routerLink="/add-new-point" [queryParams]="{ landId: land?.id }">Add New
+                Point</span>
             </div>
           </div>
           <div class="kt-portlet__body table-padd">
             <div class="kt-container  kt-grid__item kt-grid__item--fluid">
               <div class="row">
                 <div class="col-xl-12">
-                  <div
-                    class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile"
-                  >
+                  <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile">
                     <div
-                      class="kt-portlet__body kt-portlet__body--fit overflow-auto users-outer-wrapper position-relative"
-                    >
-                      <table
-                        datatable
-                        [dtOptions]="dtOptions"
-                        [dtTrigger]="dtTrigger"
-                        class="row-border hover"
-                      >
+                      class="kt-portlet__body kt-portlet__body--fit overflow-auto users-outer-wrapper position-relative">
+                      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
                         <thead>
                           <tr>
                             <th>Number</th>
@@ -157,46 +136,25 @@
                               {{ point?.name }}
                             </td>
                             <td>
-                              <div  [froalaView]="point?.desc | substring: [60]"></div>                              
+                              <p [innerHtml]="point?.desc | substring: [60]"></p>
+                              <!-- <div [froalaView]="point?.desc | substring: [60]"></div> -->
                             </td>
                             <td>
-                              <a
-                                *ngIf="point?.audioURL"
-                                href="{{point?.audioURL}}"
-                                target="_blank"
-                                >Audio</a
-                              >
+                              <a *ngIf="point?.audioURL" href="{{point?.audioURL}}" target="_blank">Audio</a>
                             </td>
                             <td>
-                              <a
-                                *ngIf="point?.videoURL"
-                                href="{{point?.videoURL}}"
-                                target="_blank"
-                                >Video</a
-                              >
+                              <a *ngIf="point?.videoURL" href="{{point?.videoURL}}" target="_blank">Video</a>
                             </td>
                             <td>
-                              <a
-                                *ngIf="point?.imageURL"
-                                href="{{point?.imageURL}}"
-                                target="_blank"
-                                >Image</a
-                              >
+                              <a *ngIf="point?.imageURL" href="{{point?.imageURL}}" target="_blank">Image</a>
                             </td>
                             <td>{{ point?.dateAdded }}</td>
                             <td class="actions">
-                              <span
-                                class="edit"
-                                routerLink="/add-new-point"
-                                [queryParams]="{
+                              <span class="edit" routerLink="/add-new-point" [queryParams]="{
                                   editingPointId: point?.id,
                                   landId: land?.id
-                                }"
-                                >Edit</span
-                              >
-                              <span class="delete" (click)="deletePoint(point)"
-                                >Delete</span
-                              >
+                                }">Edit</span>
+                              <span class="delete" (click)="deletePoint(point)">Delete</span>
                             </td>
                           </tr>
                         </tbody>
