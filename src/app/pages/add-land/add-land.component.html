@@ -50,6 +50,8 @@
                 />
                 <label>Enter the Description</label>
                 <div [froalaEditor]="imgOptions" [(froalaModel)]="newLand.description"  >Enter Discription</div>
+
+                <textarea placeholder="Add Image more details text" [(ngModel)]="newLand.imageDetail"></textarea>
              
                 <div class="status-product">
                   <div class="status-heading">Protection Type</div>
