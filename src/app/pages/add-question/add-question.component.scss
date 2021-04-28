@@ -1,0 +1,166 @@
+.user-icon {
+    width        : 32px;
+    border-radius: 50%;
+    height       : 32px;
+  }
+  .font-bold{
+    font-style: bold;;
+    font-weight: bold;
+    color: blue;
+}
+
+.font-italic{
+    font-style: italic;
+    color: black;
+}
+  
+  .filter-position-c {
+    position: absolute;
+    top     : 13px;
+    z-index : 99;
+    right   : 15px;
+  }
+  
+  .flex-prop {
+    text-align: -webkit-center;
+  
+    .add-new-btn {
+      display      : inline-block;
+      border-radius: 10em;
+      padding      : 8px 15px;
+      cursor       : pointer;
+      min-width    : 150px;
+      margin-top   : 20px;
+  
+      &:active {
+        border: 1px solid #8c8c8c8c;
+        color : #8c8c8c8c;
+      }
+    }
+  }
+  
+  select {
+    width: 100%;
+  }
+  
+  
+  .modal-body {
+  
+    .outer {
+      display       : flex;
+      flex-direction: column;
+      margin-bottom : 15px;
+    }
+  
+    .password-field {
+      position: relative;
+  
+      .eye {
+        position  : absolute;
+        right     : 11px;
+        margin-top: 28px;
+      }
+    }
+  }
+  
+  .error-text {
+    color: red;
+  }
+  
+  .name {
+    text-transform: capitalize;
+  }
+  
+  .actions {
+    text-align: center;
+  
+    span {
+      font-size   : 18px;
+      margin-right: 10px;
+      cursor      : pointer;
+    }
+  
+    .edit {
+      color: blue;
+    }
+  
+    .delete {
+      color: red;
+    }
+  }
+  
+  .form-flex {
+    display        : flex;
+    justify-content: center;
+  
+    .form-sect {
+      h1 {
+        font-size     : 18px;
+        border-bottom : 1px solid #646c9a;
+        padding-bottom: 5px;
+        margin-top    : 30px;
+        margin-bottom : 20px;
+      }
+  
+      .outer {
+        input {
+          margin-bottom: 15px;
+          display      : block;
+          width        : 70%;
+          border       : 0;
+          border-bottom: 1px solid #e8e8e8;
+        }
+      }
+    }
+  }
+  
+  ::-webkit-input-placeholder {
+    /* Edge */
+    color: #cacaca;
+  }
+  
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #cacaca;
+  }
+  
+  ::placeholder {
+    color: #cacaca;
+  }
+  
+  .product-add-img-list-outer {
+    .add-prod-imgs {
+      margin-top: 10px;
+    }
+  
+    .list-add-img {
+      .img {
+        position           : relative;
+        margin-right       : 8px;
+        display            : inline-block;
+        height             : 115px;
+        width              : 115px;
+        background-size    : cover !important;
+        background-position: center !important;
+  
+        .cross-icon {
+          position       : absolute;
+          right          : 7px;
+          top            : 5px;
+          background     : #fff;
+          border-radius  : 50%;
+          height         : 20px;
+          width          : 20px;
+          display        : inline-flex;
+          align-items    : center;
+          justify-content: center;
+          border: 1px solid gray;
+        }
+      }
+    }
+  }
+  
+  .uploading-text {
+    margin-top : 10px;
+    font-weight: bold;
+  }

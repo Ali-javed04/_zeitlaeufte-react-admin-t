@@ -1,0 +1,75 @@
+.user-icon {
+  width        : 32px;
+  border-radius: 50%;
+  height       : 32px;
+}
+
+.filter-position-c {
+  position: absolute;
+  top     : 13px;
+  z-index : 99;
+  right   : 15px;
+}
+
+
+  span {
+    // font-size   : 18px;
+    margin-right: 10px;
+    cursor      : pointer;
+  }
+
+  .edit {
+    color: blue;
+  }
+
+  .delete {
+    color: red;
+  }
+
+.modal-body {
+  .outer {
+    display       : flex;
+    flex-direction: column;
+    margin-bottom : 15px;
+  }
+
+  .password-field {
+    position: relative;
+
+    .eye {
+      position  : absolute;
+      right     : 11px;
+      margin-top: 28px;
+    }
+  }
+}
+
+.error-text {
+  color: red;
+}
+
+.name {
+  text-transform: capitalize;
+}
+
+.flex-prop {
+  display        : flex;
+  align-items    : center;
+  flex-direction : row;
+  justify-content: space-between;
+  width          : 100%;
+
+  .add-new-btn {
+    color        : #fff;
+    display      : inline-block;
+    border       : 1px solid #fff;
+    border-radius: 10em;
+    padding      : 8px 15px;
+    cursor       : pointer;
+
+    &:active {
+      border: 1px solid #8c8c8c8c;
+      color : #8c8c8c8c;
+    }
+  }
+}

@@ -12,7 +12,7 @@
         <div class="kt-subheader__main flex-prop">
           <div>
             <div class="kt-subheader__main">
-              <h3 class="kt-subheader__title">Lands</h3>
+              <h3 class="kt-subheader__title">Questions</h3>
               <div class="kt-subheader__breadcrumbs">
                 <a href="#" class="kt-subheader__breadcrumbs-home">
                   <i class="flaticon2-shelter"></i>
@@ -27,14 +27,14 @@
                   class="kt-subheader__breadcrumbs-link"
                   routerLink="/add-lands"
                 >
-                  Lands
+                  Questions
                 </a>
               </div>
             </div>
           </div>
           <div>
-            <span class="add-new-btn" routerLink="/add-lands"
-              >Add New Land</span
+            <span class="add-new-btn" routerLink="/add-question"
+              >Add New Question</span
             >
           </div>
         </div>
@@ -61,51 +61,34 @@
               >
                 <thead>
                   <tr>
-                    <th>Land Image</th>
                     <th>Title</th>
-                    <th>Description</th>
-                    <th>Total Points</th>
-                    <th>Date Added</th>
-                    <td>Actions</td>
+                    <th>Options</th>
+                    <th>Answer</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let land of lands">
-                    <td class="position-relative">
-                      <img
-                        src="{{
-                          land.imageUrl != null
-                            ? land.imageUrl
-                            : 'assets/imgs/login-logo.png'
-                        }}"
-                        onError="this.onerror=null;this.src='assets/imgs/login-logo.png'"
-                        class="user-icon"
-                      />
+                  <tr *ngFor="let question of questions">
+                    <td>
+                      {{ question.title }}
+                    </td>
+                    <td> 
+                        <tr *ngFor="let item of question.options; let i = index">
+                            <td>{{i+1 +"- "+item}}</td>
+                        </tr> 
                     </td>
                     <td>
-                      {{ land.title }}
-                    </td>
-                    <td ><p  [innerHtml]="land?.description | substring: [60] "></p> </td>
-                    <td>
-                      {{ land?.points?.length ? land?.points?.length : 0 }}
-                    </td>
-                    <td>
-                      {{ land.dateAdded | localDate: "MMM D, YYYY h:mm A" }}
+                      {{ question?.answer }}
                     </td>
                     <td class="actions">
+                      
                       <span
                         class="edit"
-                        routerLink="/land-detail"
-                        [queryParams]="{ id: land.id }"
-                        >Detail</span
-                      >
-                      <span
-                        class="edit"
-                        routerLink="/add-lands"
-                        [queryParams]="{ editingLandId: land.id }"
+                        routerLink="/add-question"
+                        [queryParams]="{ editingQuestionId: question.id }"
                         >Edit</span
                       >
-                      <span class="delete" (click)="deleteLand(land)"
+                      <span class="delete" (click)="deleteQuestion(question)"
                         >Delete</span
                       >
                     </td>
@@ -122,3 +105,5 @@
     <!-- end:: Content -->
   </div>
 </div>
+
+

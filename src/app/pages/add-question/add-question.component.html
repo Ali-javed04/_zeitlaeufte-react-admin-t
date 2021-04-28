@@ -1,0 +1,86 @@
+<div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch" id="kt_body">
+    <div class="kt-content kt-content--fit-top  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor"
+        id="kt_content">
+        <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+            <div class="kt-container ">
+                <div class="kt-subheader__main flex-prop">
+                    <div>
+                        <h3 class="kt-subheader__title">
+                            {{ editingQuestionId ? "Update Question" : "Add New Question" }}
+                        </h3>
+                        <div class="kt-subheader__breadcrumbs">
+                            <a href="#" class="kt-subheader__breadcrumbs-home">
+                                <i class="flaticon2-shelter"></i>
+                            </a>
+                            <span class="kt-subheader__breadcrumbs-separator"></span>
+                            <a routerLink="/homes" class="kt-subheader__breadcrumbs-link">
+                                Dashboard
+                            </a>
+                            <span class="kt-subheader__breadcrumbs-separator"></span>
+                            <a routerLink="/lands" class="kt-subheader__breadcrumbs-link">
+                                Questions
+                            </a>
+                            <span class="kt-subheader__breadcrumbs-separator"></span>
+                            <a class="kt-subheader__breadcrumbs-link">
+                                {{ editingQuestionId ? "Update Question" : "Add New Question" }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+            <div class="row form-flex">
+                <div class="col-sm-6">
+                    <div class="kt-portlet kt-portlet--height-fluid kt-portlet--mobile">
+                        <div
+                            class="kt-portlet__body kt-portlet__body--fit overflow-auto users-outer-wrapper position-relative form-sect">
+                            <div class="outer">
+                                <h1>Question Information</h1>
+                                
+                                <div class="form-control status-heading">Title</div>
+                                <input type="text" class="form-control"
+                                 [(ngModel)]="newQuestion.title" placeholder="Enter title of Question" />
+
+                                <div class="form-control status-heading">Options</div>
+                                <ul *ngFor="let item of newQuestion.options; let i = index">
+                                    <li>{{item}}  <button (click)="removeOption(i)"> X </button></li>
+                                </ul>
+                                <div class="row add-option" *ngIf="newQuestion.options.length<4">
+                                    <div class="col-6">
+                                        <input #option type="text" class="form-control" placeholder="Enter option for Question" /><br>
+                                        <div class="col-6">
+                                            <button (click)="addOption(option.value)" class="btn btn-primary btn-xm">add</button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-control status-heading">Answer</div>
+                                <input type="text" class="form-control" placeholder="Enter answer" [(ngModel)]="newQuestion.answer">
+
+
+                                <p class="uploading-text">{{ uploadingText }}</p>
+
+                                <div class="flex-prop">
+                                    <button [disabled]="isSaving" class="add-new-btn" (click)="saveQuestion()">
+                                        {{
+                      isSaving
+                        ? "Please wait"
+                        : editingQuestionId
+                        ? "Update"
+                        : "Save"
+                    }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
